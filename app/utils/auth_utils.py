@@ -5,9 +5,9 @@ from jose import jwt
 from app.settings import settings
 
 
-ACCESS_TOKEN_EXPIRE_MINUTES = 240  # 30 minutes
-REFRESH_TOKEN_EXPIRE_MINUTES = 60 * 24 * 7 # 7 days
-ALGORITHM = "HS256"
+ACCESS_TOKEN_EXPIRE_MINUTES = settings.access_token_expire_minutes
+REFRESH_TOKEN_EXPIRE_MINUTES = settings.refresh_token_expire_minutes
+ALGORITHM = settings.algorithm
 JWT_SECRET_KEY = settings.jwt_secret_key
 JWT_REFRESH_SECRET_KEY = settings.jwt_refresh_secret_key
 
