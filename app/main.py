@@ -1,6 +1,8 @@
 from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+
 from .routes import users, auth
 from .seeders import role_seeder, user_seeder
 
@@ -23,10 +25,7 @@ app = FastAPI(
 app.include_router(auth.app, prefix="/auth", tags=["Authentication"])
 app.include_router(users.app, prefix="/users", tags=["Users Management"])
 
-
-@app.on_event("startup")
-async def startup():
-    await role_seeder.initialize_roles()
+app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["*"])
 
 
 @app.get("/", tags=["root"], summary="Root Endpoint")
