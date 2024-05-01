@@ -3,7 +3,8 @@ from app.db import get_session
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.models.users import *
+from app.models.users import User
+from app.schemas.user_schemas import CreateUser, UpdateUser, UserModel
 from app.utils.auth_utils import get_hashed_password
 app = APIRouter()
     

@@ -6,7 +6,8 @@ from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.db import get_session
-from app.models.users import User, UserModel
+from app.models.users import User
+from app.schemas.user_schemas import UserModel
 from .utils.auth_utils import (
     ALGORITHM,
     JWT_SECRET_KEY

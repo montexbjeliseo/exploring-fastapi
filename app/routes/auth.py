@@ -5,7 +5,8 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.db import get_session
 from app.dependencies import get_current_user
-from app.models.users import User, UserModel
+from app.models.users import User
+from app.schemas.user_schemas import CreateUser, UserModel
 from app.utils.auth_utils import *
 
 
@@ -26,8 +27,18 @@ async def login(user: OAuth2PasswordRequestForm = Depends(), session: AsyncSessi
         }
 
 @app.post("/register")
-async def register():
-    pass
+async def register(user: CreateUser, session: AsyncSession = Depends(get_session)):
+    user.password = get_hashed_password(user.password)
+    saved_user = User(
+        first_name=user.first_name, 
+        last_name=user.last_name, 
+        email=user.email, 
+        password=user.password
+        )
+    session.add(saved_user)
+    await session.commit()
+    await session.refresh(saved_user)
+    return saved_user
 
 @app.get("/me", response_model=UserModel)
 async def me(user: User = Depends(get_current_user)):
