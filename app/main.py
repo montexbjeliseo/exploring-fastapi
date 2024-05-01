@@ -2,12 +2,13 @@ from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
 from .routes import users, auth
-from .seeders import role_seeder
+from .seeders import role_seeder, user_seeder
 
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     await role_seeder.initialize_roles()
+    await user_seeder.initialize_users()
     yield
     # clear
 

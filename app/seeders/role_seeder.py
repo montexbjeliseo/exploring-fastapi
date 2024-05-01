@@ -1,15 +1,7 @@
 from sqlalchemy import select
-from sqlalchemy.ext.asyncio import async_session
 
-from app.db import Base, engine, SessionLocal
 from app.models.roles import Role
-
-
-async def get_session():
-    async with engine.begin() as conn:
-        await conn.run_sync(Base.metadata.create_all)
-
-    return SessionLocal()
+from app.seeders.seeder import get_session
 
 
 async def initialize_roles():

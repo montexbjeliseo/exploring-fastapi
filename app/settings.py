@@ -2,7 +2,7 @@ from pydantic_settings import BaseSettings
 import os
 from dotenv import load_dotenv
 
-_= load_dotenv(os.path.join(os.path.dirname(__file__), '.env'))
+_ = load_dotenv(os.path.join(os.path.dirname(__file__), '.env'))
 
 
 class Settings(BaseSettings):
@@ -12,5 +12,8 @@ class Settings(BaseSettings):
     access_token_expire_minutes: int = int(os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES"))
     refresh_token_expire_minutes: int = int(os.getenv("REFRESH_TOKEN_EXPIRE_MINUTES"))
     algorithm: str = os.getenv("ALGORITHM")
+    admin_email: str = os.getenv("ADMIN_EMAIL")
+    admin_password: str = os.getenv("ADMIN_PASSWORD")
+
 
 settings = Settings()

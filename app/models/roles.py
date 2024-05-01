@@ -1,4 +1,5 @@
-from sqlalchemy.orm import Mapped, MappedColumn, relationship
+from sqlalchemy import ForeignKey
+from sqlalchemy.orm import Mapped, MappedColumn, relationship, backref
 
 from app.db import Base
 
@@ -8,4 +9,5 @@ class Role(Base):
 
     id: Mapped[int] = MappedColumn(primary_key=True, index=True)
     name: Mapped[str] = MappedColumn(unique=True, index=True)
-    users: Mapped[list["User"]] = relationship("User", back_populates="roles")
+
+    users: Mapped["User"] = relationship("User", back_populates="role", primaryjoin="User.role_id == Role.id")
