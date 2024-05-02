@@ -3,8 +3,8 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from .routes import users, auth
-from .seeders import role_seeder, user_seeder
+from app.routes import users, auth
+from app.seeders import role_seeder, user_seeder
 
 
 @asynccontextmanager
@@ -33,3 +33,7 @@ async def root():
     return {
         "message": "Service is up and running!",
     }
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8005)
