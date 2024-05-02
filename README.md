@@ -2,7 +2,7 @@
 Exploring FastAPI
 
 ## Requirements
-- pdm is required as dependecy manager
+- pdm is required as dependency manager
 - postgres
 - create and fill .env file
 
