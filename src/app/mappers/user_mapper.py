@@ -1,5 +1,5 @@
 from app.models.users import User
-from app.schemas.user_schemas import UserModel, CreateUser
+from app.schemas.user_schemas import UserModel
 
 
 def to_user_model(user: User) -> UserModel:
