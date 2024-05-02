@@ -20,8 +20,6 @@ app = APIRouter()
 async def get_users(session: AsyncSession = Depends(get_session)):
     results = await session.execute(select(User).options(selectinload(User.role)))
     users = results.scalars().fetchall()
-
-    print("Users:", users[0])
     mapped = to_user_model_list(users)
     return mapped
 
