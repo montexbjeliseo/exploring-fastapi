@@ -6,7 +6,7 @@ Exploring FastAPI
 - postgres
 - create and fill .env file
 
-## Installing dependecies
+## Installing dependencies
 - pdm install
 
 ## Running the project
