@@ -25,6 +25,6 @@ async def initialize_roles():
             async_db.add(Role(**role))
 
         await async_db.commit()
-        await async_db.refresh(Role)
+        # await async_db.refresh(Role)
         await async_db.close()
         print("Seeding roles done!")

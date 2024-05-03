@@ -38,6 +38,6 @@ async def initialize_users():
             async_db.add(User(**user))
 
         await async_db.commit()
-        await async_db.refresh(User)
+        # await async_db.refresh(User)
         await async_db.close()
         print("Seeding users done!")
